@@ -27,7 +27,7 @@ export class HotelSearchComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger
+    
     this.getHotelData()
   }
 
@@ -42,7 +42,7 @@ export class HotelSearchComponent implements OnInit {
     });
   }
   viewHotelDetails(data) {
-    debugger
+    
     this.sharedService.setHotel(data);
     this.router.navigate(['hotel-monitoring']);
   }

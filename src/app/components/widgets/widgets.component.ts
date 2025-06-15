@@ -16,7 +16,7 @@ export class WidgetsComponent implements OnInit {
   }
 
   assignWidgets() {
-    debugger
+    
     this.widgets.push(
       { label: 'Last Used', value: this.hotelDetailData['lastUsedDate'] },
       { label: 'Upcoming Confirmed', value: this.hotelDetailData['confirmedBookings']?.toString() },

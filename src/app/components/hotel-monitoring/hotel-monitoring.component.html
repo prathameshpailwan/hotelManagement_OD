@@ -4,7 +4,7 @@
     <div class="col-md-3 h-100">
       <div class="card h-100">
         <div class="card-body p-2 h-100">
-          <app-left-panel [hotelDetailData]="hotelData"></app-left-panel>
+          <app-left-panel [hotelDetailData]="hotelData" (updateEvent)="handleUpdate($event)"></app-left-panel>
         </div>
       </div>
     </div>
@@ -13,8 +13,8 @@
     <div class="col-md-9 d-flex flex-column h-100">
       <!-- Tabs (Top) -->
       <div class="card mb-2">
-       <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
-        aria-label="Close" (click)="backToSearch()"></button>
+        <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close"
+          (click)="backToSearch()"></button>
         <div class="card-body p-2">
           <app-right-panel (tabChanged)="onTabChanged($event)"></app-right-panel>
         </div>
@@ -68,3 +68,60 @@
     </div>
   </div>
 </div>
+
+<ng-template #updateHotelData let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Update Hotel Information</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Email:</label>
+          <input type="email" class="form-control" [(ngModel)]="updateDataModel['email']" name="email" />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Mobile:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['phone']" name="mobile" />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Short Name:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['shortName']" name="shortName" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Service ID:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['serviceId']" name="serviceId" />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Service Type:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['serviceType']" name="serviceType" />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Default Currency:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['currency']" name="defaultCurrency" />
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <label class="form-label">Location:</label>
+          <input type="text" class="form-control" [(ngModel)]="updateDataModel['location']" name="location" />
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveUpdate()">Update</button>
+  </div>
+</ng-template>

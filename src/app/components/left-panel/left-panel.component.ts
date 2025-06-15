@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedModule } from '../../SharedModule';
 
 @Component({
@@ -10,14 +10,14 @@ import { SharedModule } from '../../SharedModule';
 export class LeftPanelComponent implements OnInit {
   HodelModel: any[] = []
   @Input() hotelDetailData: any;
-
+  @Output() updateEvent = new EventEmitter<any>();
   ngOnInit(): void {
-    debugger
+    
     this.assignData();
     this.hotelDetailData
   }
   assignData() {
-    debugger
+    
     let addresslist = []
     let basiInfo = []
     addresslist = this.hotelDetailData['address']
@@ -34,7 +34,11 @@ export class LeftPanelComponent implements OnInit {
     this.HodelModel['currency'] = basiInfo['currency']
     this.HodelModel['location'] = basiInfo['location']
     // this.HodelModel = this.hotelDetailData 
-        
 
+
+  }
+  updateData(UpdateData) {
+    
+    this.updateEvent.emit(UpdateData);
   }
 }

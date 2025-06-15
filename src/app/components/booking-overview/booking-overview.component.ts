@@ -47,7 +47,7 @@ export class BookingOverviewComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    debugger
+    
     this.barChartData.datasets[0].data = this.monthlyBookings;
   }
 }
