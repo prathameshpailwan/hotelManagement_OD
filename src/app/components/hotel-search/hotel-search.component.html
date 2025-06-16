@@ -23,12 +23,18 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="d-flex justify-content-between align-items-center">
+        <div >
+           <h5>Total Items: {{ (HotelDataList | filterHotels:searchText).length }}</h5> 
+        </div>
+        <div class="float-end">
+            <app-pagination-control [data]="HotelDataList | filterHotels:searchText" [pageSize]="pageSize"
+                (paginated)="paginatedHotels = $event">
+            </app-pagination-control>
+        </div>
     </div>
-    <div class="float-end">
-        <app-pagination-control [data]="HotelDataList | filterHotels:searchText" [pageSize]="pageSize"
-            (paginated)="paginatedHotels = $event">
-        </app-pagination-control>
-    </div>
+
 
 </div>
